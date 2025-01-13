@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Stamp Paper OCR</h1>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <ul class="nav nav-tabs" id="uploadTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="single-tab" data-bs-toggle="tab" data-bs-target="#single" type="button" role="tab">Single Image</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="pdf-tab" data-bs-toggle="tab" data-bs-target="#pdf" type="button" role="tab">PDF Batch</button>
+                        </li>
+                    </ul>
+                    
+                    <div class="tab-content mt-3" id="uploadTabContent">
+                        <div class="tab-pane fade show active" id="single" role="tabpanel">
+                            <form id="singleUploadForm" enctype="multipart/form-data">
+                                <div class="mb-3">
+                                    <label for="imageFile" class="form-label">Select Stamp Paper Image</label>
+                                    <input type="file" class="form-control" id="imageFile" name="file" accept="image/*" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100">Process Image</button>
+                            </form>
+                        </div>
+                        
+                        <div class="tab-pane fade" id="pdf" role="tabpanel">
+                            <form id="pdfUploadForm" enctype="multipart/form-data">
+                                <div class="mb-3">
+                                    <label for="pdfFile" class="form-label">Select PDF File</label>
+                                    <input type="file" class="form-control" id="pdfFile" name="file" accept=".pdf" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100">Process PDF</button>
+                            </form>
+                            
+                            <div id="progressContainer" class="mt-3" style="display: none;">
+                                <div class="progress">
+                                    <div id="progressBar" class="progress-bar" role="progressbar" style="width: 0%"></div>
+                                </div>
+                                <small class="text-muted" id="progressText">Processing: 0/0 pages</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="results" class="mt-4"></div>
+        </div>
+    </div>
+</div>
+{% endblock %}
